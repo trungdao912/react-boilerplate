@@ -3,7 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "build": "webpack"
+  },
   "repository": "https://github.com/trungdao912/react-boilerplate.git",
-  "author": "Theo Dao <trungdao912@gmail.com>"
+  "author": "Theo Dao <trungdao912@gmail.com>",
+  "devDependencies": {
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
+  }
 }
