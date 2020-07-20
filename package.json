@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "scripts": {
-    
-  }
+  "scripts": {},
+  "repository": "https://github.com/trungdao912/react-boilerplate.git",
+  "author": "Theo Dao <trungdao912@gmail.com>"
 }
