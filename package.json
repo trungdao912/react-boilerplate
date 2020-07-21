@@ -47,7 +47,9 @@
     "@babel/polyfill": "^7.10.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-hot-loader": "^4.12.21"
+    "react-hot-loader": "^4.12.21",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5"
   },
   "husky": {
     "hooks": {
