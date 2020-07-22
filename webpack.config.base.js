@@ -5,13 +5,22 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'app.bundle.js',
+    filename: 'app.[contentHash].js',
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.js/,
         loader: 'babel-loader',
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.jsx/,
+        use: [
+          {
+            loader: path.resolve(__dirname, './image-loader.js'),
+          },
+        ],
         exclude: /node_modules/,
       },
       {
@@ -37,4 +46,7 @@ module.exports = {
       template: './src/index.html',
     }),
   ],
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
 };

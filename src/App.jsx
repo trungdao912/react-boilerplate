@@ -4,6 +4,7 @@ import './styles.scss';
 
 class App extends Component {
   componentDidMount = () => {
+    console.log('hehe');
     console.log(this.props);
   };
 
@@ -20,6 +21,7 @@ class App extends Component {
         </button>
         <p>{this.props.app.age} is here</p>
         <p>{this.props.app.loading ? <>Loading...</> : <></>}</p>
+        <img src="/images.jpeg" />
       </>
     );
   }
