@@ -26,7 +26,7 @@ class App extends Component {
 
 const actionCreator = () => ({
   type: 'FETCH_ITEMS',
-  promise: () => fetch('https://jsonplaceholder.typicode.com/photos'),
+  promise: () => fetch('https://reqres.in/api/users?page=1'),
 });
 
 const mapStateToProps = (state) => ({

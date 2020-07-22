@@ -6,7 +6,7 @@ const configureStore = () => {
   const middlewares = [];
 
   /** Custom middleware */
-  const promiseMiddleware = () => (next) => (action) => {
+  const promiseMiddleware = (store) => (next) => (action) => {
     const { type, promise } = action;
 
     if (promise === undefined) {
@@ -19,13 +19,16 @@ const configureStore = () => {
       });
 
       promise()
-        .then(() => {
-          next({
-            type: `${type}_SUCCESS`,
+        .then((response) => {
+          response.json().then((res) => {
+            return next({
+              type: `${type}_SUCCESS`,
+              payload: res.data,
+            });
           });
         })
-        .catch(() => {
-          next({ type: `${type}_FAIL` });
+        .catch((err) => {
+          return next({ type: `${type}_FAIL`, payload: err });
         });
     }
 
