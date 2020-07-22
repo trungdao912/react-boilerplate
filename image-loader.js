@@ -6,7 +6,7 @@ module.exports = function (source) {
   const stringCombination = [];
   let match;
   let regex = /src={?"\/?(.*)\/*"}?/g;
-  let i = 0; // index
+  let currentIndex = 0;
 
   const replaceFunction = (fileName) => {
     const hash = crypto.createHash('sha1');
@@ -25,18 +25,17 @@ module.exports = function (source) {
   };
 
   while ((match = regex.exec(source)) !== null) {
-    console.log(match);
     // Push before part to the array
-    stringCombination.push(source.slice(i, match.index));
+    stringCombination.push(source.slice(currentIndex, match.index));
 
     // Push the changed part to the array
     stringCombination.push(replaceFunction(match[1]));
 
-    i = regex.lastIndex;
+    currentIndex = regex.lastIndex;
   }
 
   // Push the after part to the array
-  stringCombination.push(source.slice(i));
+  stringCombination.push(source.slice(currentIndex));
 
   return stringCombination.join('');
 };

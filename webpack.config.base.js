@@ -15,7 +15,7 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.jsx/,
+        test: /\.js/,
         use: [
           {
             loader: path.resolve(__dirname, './image-loader.js'),
@@ -47,6 +47,6 @@ module.exports = {
     }),
   ],
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js'],
   },
 };

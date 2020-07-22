@@ -22,6 +22,7 @@ class App extends Component {
         <p>{this.props.app.age} is here</p>
         <p>{this.props.app.loading ? <>Loading...</> : <></>}</p>
         <img src="/images.jpeg" />
+        <img src="/images.jpeg" />
       </>
     );
   }
