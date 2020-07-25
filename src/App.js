@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { fetchUser } from './redux/actions/appActions';
 import './styles.scss';
 
 class App extends Component {
-  componentDidMount = () => {
-    console.log('hehe');
-    console.log(this.props);
-  };
+  componentDidMount = () => {};
 
   render() {
     return (
@@ -28,17 +26,12 @@ class App extends Component {
   }
 }
 
-const actionCreator = () => ({
-  type: 'FETCH_ITEMS',
-  promise: () => fetch('https://reqres.in/api/users?page=1'),
-});
-
 const mapStateToProps = (state) => ({
   app: state.app,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  demoEvent: () => dispatch(actionCreator()),
+  demoEvent: () => dispatch(fetchUser()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
