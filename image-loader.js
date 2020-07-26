@@ -1,6 +1,6 @@
 const crypto = require('crypto');
 const path = require('path');
-const { existsSync } = require('fs');
+const { existsSync, readFileSync } = require('fs');
 
 module.exports = function (source) {
   const stringCombination = [];
@@ -9,13 +9,14 @@ module.exports = function (source) {
   let currentIndex = 0;
 
   const replaceFunction = (fileName) => {
-    const hash = crypto.createHash('sha1');
-    hash.setEncoding('hex');
-    hash.write(fileName);
-    hash.end();
-
     const rawPath = path.join(__dirname, '/public/', fileName);
+
     if (existsSync(rawPath)) {
+      const bufferContent = readFileSync(rawPath);
+      const hash = crypto.createHash('sha1');
+      hash.setEncoding('hex');
+      hash.write(bufferContent);
+      hash.end();
       const pathResolved = `/public/${fileName}?v=${hash
         .read()
         .substring(0, 8)}`;
